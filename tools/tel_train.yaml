@@ -1,0 +1,11 @@
+
+beam: 100
+retry_beam: 400
+training:
+  - monophone:
+      num_iterations: 20
+      max_gaussians: 500
+  - triphone:
+      num_iterations: 20
+      num_leaves: 1500
+      max_gaussians: 5000
