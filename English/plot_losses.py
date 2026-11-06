@@ -14,8 +14,13 @@ TAGS = [("Loss/total_loss", "total"), ("Loss/mel_loss", "mel"), ("Loss/mel_postn
 def load(folder):
     ea = EventAccumulator(folder, size_guidance={"scalars": 0})
     ea.Reload()
-    return {t: ([e.step for e in ea.Scalars(t)], [e.value for e in ea.Scalars(t)])
-            for t, _ in TAGS if t in ea.Tags()["scalars"]}
+    out = {}
+    for t, _ in TAGS:
+        if t in ea.Tags()["scalars"]:
+            by_step = {e.step: e.value for e in ea.Scalars(t)}   # a resumed run rewrites some steps: keep the latest value
+            steps = sorted(by_step)
+            out[t] = (steps, [by_step[s] for s in steps])
+    return out
 
 
 def smooth(v, k=5):

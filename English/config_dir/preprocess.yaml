@@ -1,10 +1,10 @@
 dataset: "English"
 path:
-  corpus_path: "/kaggle/working/raw/English"
+  corpus_path: "/kaggle/working/seg/English/raw"
   lexicon_path: "lexicon/librispeech-lexicon.txt"
-  raw_path: "/kaggle/working/raw/English"
+  raw_path: "/kaggle/working/seg/English/raw"
   preprocessed_path: "./preprocessed_data/English"
-  manifest_path: "/kaggle/input/datasets/mahithachopra/svarah-tts-en/English_manifest.csv"
+  manifest_path: "/kaggle/working/seg/English/English_manifest.csv"
 preprocessing:
   val_size: 0
   text:
